@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, effect, inject } from '@angular/core';
 import { BookService } from '../../services/book.service';
-
+import { Book } from '../../models/book';
 @Component({
   selector: 'app-book-list',
   imports: [CommonModule],
