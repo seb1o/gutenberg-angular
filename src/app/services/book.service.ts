@@ -1,5 +1,5 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
-
+import { Book, Author } from '../components/models/book';
 @Injectable({
   providedIn: 'root'
 })

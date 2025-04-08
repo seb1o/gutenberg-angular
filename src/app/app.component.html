@@ -1,3 +1,8 @@
+<app-book-header></app-book-header>
+<div class="book-list">
+  <app-book-card *ngFor="let book of bookService.booksArray()" [book]="book"></app-book-card>
+</div>
+<app-book-footer></app-book-footer>
 <app-book-paginator></app-book-paginator>
 <app-book-list></app-book-list>
 

@@ -1,0 +1,5 @@
+<div class="book-card">
+    <h2>{{ book.title }}</h2>
+    <p>Author: {{ book.authors[0]?.name || 'Unknown' }}</p>
+    <p>Language: {{ book.languages.join(', ') }}</p>
+  </div>
