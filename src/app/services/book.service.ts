@@ -1,16 +1,19 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { effect, Injectable, signal, WritableSignal } from '@angular/core';
 import { Book, Author } from '../models/book';
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
+  bookDetail: WritableSignal<{}> = signal({})
 
   page = 1;
   booksArray: WritableSignal<any[]> = signal([]);
-  constructor() { 
+
+  constructor() {
+    this.getBookById(26184)
     this.getBooks()
-    
+
   }
 
   getBooks() {
@@ -18,23 +21,48 @@ export class BookService {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        const books = data.results.map((book: any) => ({
-          title: book.title,
-          author: book.authors?.[0]?.name || 'Unknown Author',
-          image: book.formats['image/jpeg'] || 'default-image-url.jpg' // Use a default image if none is available
-        }));
-        this.booksArray.set(books);
-      });
-  }
+        const booksData = data.results;
 
-  next(){
-    this.page++;
-    this.getBooks();
-  }
+        let books: Book[] = [];
 
-  prev(){
-    this.page--;
-    this.getBooks();
-  }
+        for (const bookObj of booksData) {
+          const book: Book = {
+            id: Number(bookObj.id),
+            title: bookObj.title as string,
+            authors: bookObj.authors as Author[],
+            summaries: bookObj.summaries as string[],
+            subjects: bookObj.subjects as string[],
+            img: bookObj.formats['image/jpeg'] as string,
+          }
+          console.log(book);
+          
+
+          books.push(book)
+
+        }
+
+      this.booksArray.set(books);
+  })
+}
+
+getBookById(id: number){
+  const url = 'https://gutendex.com/books/' + id;
+  fetch(url)
+    .then(res => res.json())
+    .then(book => {
+      this.bookDetail.set(book);
+    })
+
+}
+
+next(){
+  this.page++;
+  this.getBooks();
+}
+
+prev(){
+  this.page--;
+  this.getBooks();
+}
 
 }

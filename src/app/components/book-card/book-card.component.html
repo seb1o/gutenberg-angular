@@ -1,5 +1,9 @@
-<div class="book-card">
-    <h2>{{ book.title }}</h2>
-    <p>Author: {{ book.authors[0]?.name || 'Unknown' }}</p>
-    <p>Language: {{ book.languages.join(', ') }}</p>
+<a  (click)="openDetail(this.bookInput.id)" class="book-card">
+  <div class="book-img">
+      <img [src]="this.bookInput.formats['image/jpeg']"/>
   </div>
+  <div class="book-text">
+      <span class="book-title">{{this.bookInput.title}}</span>
+     
+  </div>
+</a>

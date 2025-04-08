@@ -1,5 +1,10 @@
-:host{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+.book-list{
+    display:flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
     background-color: wheat;
+    height: 30%;
+    border: solid black;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }

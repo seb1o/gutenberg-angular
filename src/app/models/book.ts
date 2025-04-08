@@ -3,7 +3,8 @@ export interface Book {
     title: string;
     authors: Author[];
     summaries: string[];
-    img: string
+    subjects: string[];
+    img: string;
 }
 
 export interface Author {

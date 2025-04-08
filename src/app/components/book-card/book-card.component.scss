@@ -1,22 +1,34 @@
-.book-card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 1rem;
-    margin: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-  
-    &:hover {
-      transform: scale(1.05);
-    }
-  
-    h2 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-  
-    p {
-      margin: 0.3rem 0;
-      color: #555;
-    }
+.book-card{
+  width: 150px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  border: solid 1px black;
+  justify-content: flex-start;
+}
+  .book-img{
+    height: 70%;
+    display: flex;
+    align-items: center;
   }
+  .book-img img{
+    height: 90%;
+    width: 100%;
+    object-fit: contain;
+  }
+//     &:hover {
+//       transform: scale(1.05);
+//     }
+  
+//     h2 {
+//       font-size: 1.2rem;
+//       margin-bottom: 0.5rem;
+//     }
+  
+//     p {
+//       margin: 0.3rem 0;
+//       color: #555;
+//     }
+//   }
